@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Submission Portal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SubmissionPortal.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/admin-lte/plugins/fontawesome-free/css/all.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/admin-lte/dist/css/adminlte.min.css?v=3.2.0" asp-append-version="true" />
+    <link rel="icon" type="image/png" href="~/img/logo/sm-blue_512x512.png" asp-append-version="true">
+    <link rel="manifest" href="/manifest.json" />
+</head>
+<style>
+    body {
+        font-family: 'Henry Sans',Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+</style>
+<body class="sidebar-mini layout-fixed" style="height: auto;">
+
+    <div class="wrapper">
+        @await Html.PartialAsync("_Navbar")
+        @await Html.PartialAsync("_Sidebar")
+        <div class="content-wrapper" style="min-height: 849px;">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright © 2025 Financial Reporting Submission Portal System.</strong>
+    </footer>
+
+    <!-- jQuery and jQuery UI (order matters) -->
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- AdminLTE -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.4.1/js/dataTables.rowReorder.min.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/serviceworker.js')
+                    .then(function (registration) {
+                        console.log('ServiceWorker registered:', registration);
+                    })
+                    .catch(function (error) {
+                        console.error('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+    <partial name="_Notifications" />
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
